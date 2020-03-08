@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+{{>__head__ }}
+
+<body>
+    <div id="all">
+        {{>topnavbar }} {{>carousel }} {{>services }}
+
+        <div id="content">
+            <div class="container">
+                <div class="row bar">
+
+                    <div class="offset-md-3 col-md-6">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                <th scope="col">Tên</th>
+                                <th scope="col">Số lượng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th scope="row">Sách</th>
+                                <td>{{sachban_count}}</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">Tác giả</th>
+                                <td>{{tacgia_count}}</td>
+                                </tr>
+                                <tr>
+                            </tbody>
+                        </table>
+                    </div>
+                   
+                    <!--MAIN COINTENT HERE-->
+                    <div class="col-md-12">
+                        
+                        <div class="panel-heading home-section-title">
+                            <h3 class="h4 panel-title">
+                                <a href="/books">Các Sách Gần Nhất</a>
+                                <a class="btn btn btn-dark" href="/books" role="button">Xem thêm</a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-10">
+                                <div class="row products products-big">
+                                     <!-- Product's List -->
+                                    {{#each list_books}}
+                                    <div class="col-xl-3 col-md-4 col-sm-6">
+                                    <div class="product">
+                                        <div class="image"><a href={{url}}>
+                                        <img src="/{{HinhAnh}}" alt="" class="img-fluid image1">
+                                        </a></div>
+                                        <div class="text">
+                                        <a href={{url}} class="title">{{TuaDe}}</a>
+                                        <a href="{{TacGia.url}}" class="author">{{TacGia.Ten}}</a>
+                                        <p class="price-sale">{{Gia}}&nbsp;₫</p>
+                                        <small>
+                                            <p class="review">{{{render_Book_Rating ChiTietDanhGia}}}</p>
+                                        </small>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                {{>scrolltotop}}
+
+            </div>
+        </div>
+
+        {{>footer }}
+        
+    </div>
+
+    {{>__script__}}
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!-- ShoppingCart Modal-->
+<div id="shoppingcart-modal" tabindex="-1" role="dialog" aria-labelledby="shoppingcart-modalLabel" aria-hidden="true" class="modal fade">
+    <div role="document" class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 0px">
+            <div class="modal-header">
+                <h4 id="shoppingcart-modalLabel" class="modal-title">Giỏ Hàng</h4>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" id="shopping-cart-body">
+                {{#each shoppingcart}}
+                <div class="row" id="cart-item-{{book._id}}">
+                    <div class="col-md-2 text-center">
+                        <img src="/{{book.HinhAnh}}" alt="" class="img-responsive">
+                    </div>
+                    <div class="col-md-6">
+                        <h5>{{book.TuaDe}}</h5>
+                        <button class="btn btn-light" value="{{book._id}}" onclick="deleteItem(this)">Xóa</button>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <h5>{{book.Gia}} ₫</h5>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <button class="btn btn-light" onclick="descItem(this)" value="{{book._id}}">-</button>
+                        <span id="number-count-{{book._id}}">{{soluong}}</span>
+                        <button class="btn btn-light" onclick="incItem(this)" value="{{book._id}}">+</button>
+                    </div>
+                </div>
+                {{/each}}
+
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-12 row">
+                    <div class="col-md-2 offset-md-6 text-center">
+                        <h5>Tổng Cộng</h5>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <h5 id="total-money">{{totalcart}} ₫</h5>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <a href="/checkout">
+                            <button type="button" class="btn btn-danger">Mua Hàng</button>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- ShoppingCart modal end-->

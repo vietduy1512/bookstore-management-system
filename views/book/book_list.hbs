@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+
+{{>__head__}}
+
+  <body>
+    <div id="all">
+      {{>topnavbar }}
+
+      <!-- Heading Start -->
+      <div id="heading-breadcrumbs">
+        <div class="container">
+          <div class="row d-flex align-items-center flex-wrap">
+            <div class="col-md-7">
+              <h1 class="h2 catalog-title">{{print_genre_name genre_name}}</h1>
+            </div>
+            <div class="col-md-5">
+              <ul class="breadcrumb d-flex justify-content-end">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/books">Catalog</a></li>
+                <li class="breadcrumb-item active">{{print_genre_name genre_name}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Heading End -->
+
+      <div id="content">
+        <div class="container">
+          <div class="row bar">
+            {{> shopcategorysidebar}}
+
+            <!-- Products-->
+            <div class="col-md-12 col-lg-9">
+              <div class="row products products-big">
+
+                <!-- Info -->
+                <div class="col-md-12 mb-4">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <span class="badge badge-primary"><small>Thể loại</small></span> : {{print_genre_name genre_name}}
+                    </div>
+                    <div class="col-md-3">
+                      <span class="badge badge-success"><small>Số lượng</small></span> : {{sachban_count}}
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Product's List -->
+                {{#each list_books}}
+                <div class="col-xl-3 col-md-4 col-sm-6">
+                  <div class="product">
+                    <div class="image"><a href={{url}}>
+                      <img src="/{{HinhAnh}}" alt="" class="img-fluid image1">
+                    </a></div>
+                    <div class="text">
+                      <a href={{url}} class="title">{{TuaDe}}</a>
+                      <a href="{{TacGia.url}}" class="author">{{TacGia.Ten}}</a>
+                      <p class="price-sale">{{Gia}}&nbsp;₫</p>
+                      <small>
+                        <p class="review">{{{render_Book_Rating ChiTietDanhGia}}}</p>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+                <!-- Product's List END -->
+              </div>
+              <!-- Products END -->
+              <div class="pages">
+                <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                  <ul class="pagination">
+                    
+                    {{{render_Pagination page}}}
+                    
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+          
+          {{>scrolltotop}}
+
+        </div>
+      </div>
+
+      {{>footer}}
+
+    </div>
+    
+    <!-- Javascript files-->
+      {{>__script__}}
+
+    <script>
+      function insertPageParam(value)
+      {
+          key = encodeURI("page"); value = encodeURI(value);
+
+          var kvp = document.location.search.substr(1).split('&');
+
+          var i=kvp.length; var x; while(i--) 
+          {
+              x = kvp[i].split('=');
+
+              if (x[0]==key)
+              {
+                  x[1] = value;
+                  kvp[i] = x.join('=');
+                  break;
+              }
+          }
+
+          if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+          //this will reload the page, it's likely better to store this until finished
+          document.location.search = kvp.join('&'); 
+      }
+    </script>
+
+  </body>
+</html>

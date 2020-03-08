@@ -1,0 +1,120 @@
+<html>
+
+<title>Chi Tiết Đơn Hàng</title>
+<body>
+    <div style="margin-left: 20px; font-family: arial, helvetica, sans-serif">
+        <div>
+            <h1 style="text-align: center">Chi Tiết Đơn Hàng</h1>
+            <h3>Cảm ơn bạn đã mua hàng tại cửa hàng chúng tôi. dưới đây là chi tiết đơn hàng:</h3>
+        </div>
+        <table style="width: 90%;text-align: left">
+            <thead style="background: black; color:white">
+                <tr>
+                    <th>Hình Ảnh</th>
+                    <th>Tên</th>
+                    <th>Số Lượng</th>
+                    <th>Giá</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each cart}}
+                <tr style="padding: 5px">
+                    <td style="max-width : 50px">
+                        <img src="http://localhost:3000/{{book.HinhAnh}}" alt="" style="width: 100%">
+                    </td>
+                    <td>
+                        {{book.TuaDe}}
+                    </td>
+                    <td>
+                        {{soluong}}
+                    </td>
+                    <td>
+                        {{book.Gia}} ₫
+                    </td>
+                </tr>
+                {{/each}}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <h4>Tổng Cộng</h4>
+                    </td>
+                    <td>
+                        <h4>{{TongTien}} ₫</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+
+                    <td>
+                        <h4>Thuế</h4>
+                    </td>
+                    <td>
+                        <h4>{{Thue}} ₫</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+
+                    <td>
+                        <h4>Phí Vận Chuyển</h4>
+                    </td>
+                    <td>
+                        <h4>{{PhiVC}} ₫</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+
+                    <td>
+                        <h4>Thành Tiền</h4>
+                    </td>
+                    <td>
+                        <h3>{{HoaDon.Gia}} ₫</h3>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Thông tin vận chuyển:</h3>
+        <table style="width: 90%;text-align: left">
+            <thead style="background: black; color:white">
+                <tr>
+                    <th>Người Nhận</th>
+                    <th>SĐT</th>
+                    <th>Địa Chỉ</th>
+                    <th>Loại</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td>{{HoaDon.VanChuyen.HoTen}}</td>
+                <td>{{HoaDon.VanChuyen.SoDT}}</td>
+                <td>{{HoaDon.VanChuyen.DiaChi}}</td>
+                <td>{{HoaDon.VanChuyen.Loai}}</td>
+            </tbody>
+        </table>
+
+        <h3>Thông tin Thanh Toán:</h3>
+        <table style="width: 90%;text-align: left"> 
+            <thead style="background: black; color:white">
+                <tr>
+                    <th>Loại</th>
+                    <th>Mã Thẻ</th>
+                    <th>Chủ Thẻ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <td>{{HoaDon.ThanhToan.Loai}}</td>
+                <td>{{HoaDon.ThanhToan.MaThe}}</td>
+                <td>{{HoaDon.ThanhToan.TenChuThe}}</td>
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+
+</html>

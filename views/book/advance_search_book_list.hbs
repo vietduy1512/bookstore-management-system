@@ -1,0 +1,210 @@
+<!DOCTYPE html> {{>__head__}}
+
+<body>
+  <div id="all">
+    {{>topnavbar }}
+
+    <!-- Navbar Start-->
+
+    <!-- Navbar End-->
+
+    {{!-- {{#if userAuthen}} {{else}} {{>authen_modals}} {{/if}} {{> shopping_cart}} --}}
+
+    <!-- Heading Start -->
+    <div id="heading-breadcrumbs">
+      <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+          <div class="col-md-7">
+            <h1 class="h2 catalog-title">{{print_genre_name genre_name}}</h1>
+          </div>
+          <div class="col-md-5">
+            <ul class="breadcrumb d-flex justify-content-end">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/books">Catalog</a>
+              </li>
+              <li class="breadcrumb-item active">{{print_genre_name genre_name}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Heading End -->
+
+    <div id="content">
+      <div class="container">
+        <div class="row bar">
+          <div class="col-lg-2"></div>
+          <!-- Products-->
+          <div class="col-md-12 col-lg-8">
+            <div class="row products products-big">
+              <div class="col-md-12">
+                <form method="GET" role="search">
+
+                  <!-- Search box-->
+                  <div class="ml-auto mb-4">
+                    <h5 for="author">Tựa đề</h5>
+                    <div class="input-group search-box">
+                      <input name="search_text" type="text" placeholder="Nhập tên của sách bạn cần tìm" class="form-control" value="{{query.TuaDe}}">
+                    </div>
+                  </div>
+
+                  <!-- Author box-->
+                  <div class="form-group mb-4">
+                    <h5 for="author">Tác giả</h5>
+                    <select name="author" class="form-control">
+                      <option disabled selected value="">-- Chọn Tác giả --</option>
+                      {{#each list_authors}}
+                      <option id={{_id}} value={{_id}}>{{Ten}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+
+                  <!-- Genre box-->
+                  <div class="form-group mb-4">
+                    <h5 for="genre">Thể loại</h5>
+                    <div class="row">
+                      {{#list_genres}}
+                      <div class="col-md-4">
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" name="genre" class="form-check-input" id={{_id}} value={{_id}} {{check_isChecked_option checked}}>
+                            <h6>{{Ten}}</h6>
+                          </label>
+                        </div>
+                      </div>
+                      {{/list_genres}}
+                    </div>
+                  </div>
+
+                  <div class="form-group mb-4">
+                    <h5 for="price">Giá tiền</h5>
+                    <div class="row align-items-center">
+                      <div class="col-md-1">Từ</div>
+                      <div class="col-md-5">
+                        <input name="price" type="number" class="form-control" min="0" placeholder="Thấp nhất" value={{query.GiaMin}}>
+                      </div>
+                      <div class="col-md-1">đến</div>
+                      <div class="col-md-5">
+                        <input name="price" type="number" class="form-control" min="0" placeholder="Cao nhất" value={{query.GiaMax}}>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Submit -->
+                  <span class="input-group-append mb-5">
+                    <button type="submit" class="btn btn-secondary">
+                      <i class="fa fa-search"></i> Tìm kiếm</button>
+                  </span>
+
+                </form>
+                <!-- advance search form end -->
+              </div>
+
+
+              <!-- Info -->
+              <div class="col-md-12 mt-5">
+                <div class="row">
+                  <div class="col-md-3">
+                    <span class="badge badge-success">
+                      <small>Số lượng</small>
+                    </span> : {{sachban_count}}
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Product's List -->
+              {{#each list_books}}
+              <div class="col-xl-3 col-md-4 col-sm-6 mt-3">
+                <div class="product">
+                  <div class="image">
+                    <a href={{url}}>
+                      <img src="/{{HinhAnh}}" alt="" class="img-fluid image1">
+                    </a>
+                  </div>
+                  <div class="text">
+                    <a href={{url}} class="title">{{TuaDe}}</a>
+                    <a href="{{TacGia.url}}" class="author">{{TacGia.Ten}}</a>
+                    <p class="price-sale">{{Gia}}&nbsp;₫</p>
+                    <small>
+                      <p class="review">{{{render_Book_Rating ChiTietDanhGia}}}</p>
+                    </small>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+              <!-- Product's List END -->
+            </div>
+            <!-- Products END -->
+            <div class="pages">
+              <nav aria-label="Page navigation example" class="d-flex justify-content-center">
+                <ul class="pagination">
+
+                  {{{render_Pagination page}}}
+
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        {{>scrolltotop}}
+
+      </div>
+    </div>
+
+    {{>footer}}
+
+  </div>
+
+  <!-- Javascript files-->
+  {{>__script__}}
+
+  <script>
+    $(document).ready(function () {
+      var TacGia = "{{query.TacGia}}";
+      var TheLoai = "{{query.TheLoai}}";
+      TheLoai = TheLoai.replace(/&quot;/g, '"');
+      TheLoai = JSON.parse(TheLoai);
+
+      console.log(TacGia);
+      console.log(TheLoai);
+
+      $('#' + TacGia).prop('selected', true);
+
+      TheLoai.forEach(val => {
+        $('#' + val).prop('checked', true);
+      })
+
+
+    })
+
+    function insertPageParam(value) {
+      key = encodeURI("page"); value = encodeURI(value);
+
+      var kvp = document.location.search.substr(1).split('&');
+
+      var i = kvp.length; var x; while (i--) {
+        x = kvp[i].split('=');
+
+        if (x[0] == key) {
+          x[1] = value;
+          kvp[i] = x.join('=');
+          break;
+        }
+      }
+
+      if (i < 0) { kvp[kvp.length] = [key, value].join('='); }
+
+      //this will reload the page, it's likely better to store this until finished
+      document.location.search = kvp.join('&');
+
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+{{>__head__ }}
+
+<body>
+  <div id="all">
+
+    {{>topnavbar}}
+
+    <!-- Heading Start -->
+    <div id="heading-breadcrumbs">
+      <div class="container">
+        <div class="row d-flex align-items-center flex-wrap">
+          <div class="col-md-7">
+            <h4></h4>
+          </div>
+          <div class="col-md-5">
+            <ul class="breadcrumb d-flex justify-content-end">
+              <li class="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/books">Catalog</a>
+              </li>
+              <li class="breadcrumb-item active">Chi tiết sách</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Heading End -->
+
+    <div id="content">
+      <div class="container">
+        <div class="row bar">
+          {{> shopcategorysidebar}}
+
+          <!-- Right Content-->
+          {{#book_detail}}
+          <div class="col-md-12 col-lg-9">
+            <div class="row">
+              <div class="col-md-4">
+                <div data-slider-id="1" class="owl-carousel shop-detail-carousel">
+                  <div>
+                    <img src="/{{HinhAnh}}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="product_description">
+                  <div class="product_category" style="font-size:14px">{{{print_TheLoai TheLoai}}}</div>
+                  <div class="product_name">{{TuaDe}}</div>
+                  <div>
+                    {{{render_Book_Rating ChiTietDanhGia}}}
+                  </div>
+                  <div class="mt-2">
+                    <h4>Tác Giả:
+                      <a href="{{TacGia.url}}">{{TacGia.Ten}}</a>
+                    </h4>
+                    <p>Lượt Xem: {{View}}
+                    </p>
+                  </div>
+                  <div class="order_info d-flex flex-row">
+                    <form action="#">
+                      <div class="">
+                        <div class="product_price" style="color:red">{{Gia}} &nbsp;₫</div>
+                      </div>
+                      <div class="">
+                        <p class="text-center">
+                          <button id="add-shopping-cart-btn" type="submit" class="btn btn-template-outlined" value="{{_id}}">
+                            <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                          <button type="submit" data-toggle="tooltip" data-placement="top" title="Add to wishlist" class="btn btn-default">
+                            <i class="fa fa-heart-o"></i>
+                          </button>
+                        </p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gioi Thieu -->
+              <div class="product_text box">
+                <h4 style="color:blue">Giới thiệu</h4>
+                <p>{{{GioiThieu}}}</p>
+              </div>
+
+            </div>
+            {{/book_detail}}
+
+
+
+            <!-- Share Start -->
+            <div id="product-social " class="box social text-center mb-5 mt-5 ">
+              <h4 class="heading-light ">Chia sẻ sản phẩm</h4>
+              <ul class="social list-inline ">
+                <li class="list-inline-item ">
+                  <a href="# " data-animate-hover="pulse " class="external facebook
+                      ">
+                    <i class="fa fa-facebook "></i>
+                  </a>
+                </li>
+                <li class="list-inline-item ">
+                  <a href="# " data-animate-hover="pulse " class="external gplus
+                      ">
+                    <i class="fa fa-google-plus "></i>
+                  </a>
+                </li>
+                <li class="list-inline-item ">
+                  <a href="# " data-animate-hover="pulse " class="external twitter
+                      ">
+                    <i class="fa fa-twitter "></i>
+                  </a>
+                </li>
+                <li class="list-inline-item ">
+                  <a href="# " data-animate-hover="pulse " class="email ">
+                    <i class="fa fa-envelope "></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- Share End -->
+            <h3>Các Sách Liên Quan:</h3>
+
+            <div class="row products products-big scroll-menu flex-nowrap mb-5 ml-0 mr-0">
+              <!-- Product's List -->
+              {{#each book_detail.SachLienQuan}}
+              <div class="col-xl-3 col-md-4 col-sm-6">
+                <div class="product mb-0" style="display: inline">
+                  <div class="image">
+                    <a href="{{url}}">
+                      <img src="/{{HinhAnh}}" alt="" class="img-fluid image1">
+                    </a>
+                  </div>
+                  <div class="text">
+                      <a href={{url}} class="title">{{TuaDe}}</a>
+                      <a href="{{TacGia.url}}" class="author">{{TacGia.Ten}}</a>
+                      <p class="price-sale">{{Gia}}&nbsp;₫</p>
+                    <small>
+                        <p class="review">{{{render_Book_Rating ChiTietDanhGia}}}</p>
+                    </small>
+                  </div>
+                </div>
+              </div>
+             {{/each}}
+              <!-- Product's List END -->
+            </div>
+
+
+            <!-- Rating Detail Start -->
+            <div class="panel panel-white rating-detail">
+              <div class="row">
+                <div class="col-md-3 text-center">
+                  <h5 class="mb-0">Đánh Giá Trung Bình</h5>
+                  <p class="mb-0" style="font-size: 60px;color: red">
+                    {{{book_detail.ChiTietDanhGia.DanhGiaTrungBinh}}}
+                  </p>
+                  <p>({{book_detail.ChiTietDanhGia.SoLuong}} Đánh Giá)</p>
+                </div>
+                <div class="col-md-6 row">
+                  {{{render_Rating_Details book_detail.ChiTietDanhGia}}}
+                </div>
+                <div class="col-md-3 text-center">
+                  <Button class="btn btn-primary mt-4" id="add_rating_btn">Thêm Đánh Giá Của Bạn</Button>
+                </div>
+              </div>
+            </div>
+            <!-- Rating Detail End -->
+
+
+            <!-- Add Rating Start -->
+            <div class="panel panel-white post comment-form">
+              <div id="comment_notify" style="color:white" class="mb-2"></div>
+
+              <form action="" id="comment_form" method="POST">
+                <input type="hidden" name="SachID" value={{book_detail._id}}>
+
+                <div class="form-group">
+                  <input class="star star-5" id="star-5" type="radio" name="Rate" value="5" />
+                  <label class="star star-5" for="star-5"></label>
+                  <input class="star star-4" id="star-4" type="radio" name="Rate" value="4" />
+                  <label class="star star-4" for="star-4"></label>
+                  <input class="star star-3" id="star-3" type="radio" name="Rate" value="3" />
+                  <label class="star star-3" for="star-3"></label>
+                  <input class="star star-2" id="star-2" type="radio" name="Rate" value="2" />
+                  <label class="star star-2" for="star-2"></label>
+                  <input class="star star-1" id="star-1" type="radio" name="Rate" value="1" />
+                  <label class="star star-1" for="star-1"></label>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" class="form-control" id="TieuDeBL" name="TieuDe" placeholder="Tiêu Đề" required>
+                </div>
+                <div class="form-group">
+                  <Textarea class="form-control" placeholder="Nội Dung" id="NoiDungBL" name="NoiDung" rows="5" required></Textarea>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Bình Luận</button>
+                </div>
+
+              </form>
+            </div>
+            <!-- Add Rating End -->
+
+            <!-- Comments Start -->
+            <h3>Đánh Giá:</h3>
+            <div class=" panel panel-white comment-box p-1" id="comment_box">
+              <div id="comment_box_plh"></div>
+              {{#each book_detail.DanhGiaLimit}}
+              <div class="panel panel-white post container rating-item">
+                <div class="row">
+                  <div class="col-md-3 text-center">
+                    <img src="http://bootdey.com/img/Content/user_1.jpg" class="rounded-circle mt-2" alt="user profile image">
+                    <div>
+                      <a href="#">
+                        <b>{{this.NguoiDung.TenHienThi}}</b>
+                      </a>
+                    </div>
+                    <h6 class="text-muted time">{{this.ThoiDiem}}</h6>
+                  </div>
+                  <div class="col-md-9 comment">
+                    <h3>{{this.TieuDe}}</h3>
+                    <div>
+                      {{{render_Rating this.Rate}}}
+                    </div>
+                    <p>{{this.NoiDung}}</p>
+                  </div>
+                </div>
+              </div>
+              {{/each}}
+            </div>
+            <!-- Comments End -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {{>footer}}
+
+  </div>
+
+  {{>__script__}}
+  <script src="/javascripts/rating.js "></script>
+</body>
+
+</html>

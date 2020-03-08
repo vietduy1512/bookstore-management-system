@@ -1,0 +1,266 @@
+<div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="login-modalLabel" class="modal-title">Đăng nhập</h4>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center mt-3">
+                    <img src="/images/logo.png">
+                </div>
+                <div class="row justify-content-center mt-1 text-white" id="login_notify">
+
+                </div>
+                <form action="/authen/register" method="post" id="login_form">
+                    <div class="form-group mt-4">
+                        <div class="row align-items-center ">
+                            <div>
+                                <label>Email</label>
+                            </div>
+                            <div class="info-input">
+                                <input name="email_login" type="email" placeholder="Nhập Email hoặc Số điện thoại" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row align-items-center">
+                            <div>
+                                <label>Password</label>
+                            </div>
+                            <div class="info-input">
+                                <input name="password_login" type="password" placeholder="Mật khẩu từ 6 đến 32 ký tự" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-5">
+                        <button class="btn btn-template-outlined" type="submit">
+                            <i class="fa fa-sign-in"></i> Đăng nhập</button>
+                    </p>
+                </form>
+                <p class="text-center text-muted">
+                    <a href="#" class="switch_to_register">Chưa đăng ký? Nhấn vào đây</a>
+                </p>
+                <p class="text-center text-muted">
+                    <a href="#" class="switch_to_forgotpassword">Quên Mật Khẩu? Nhấn vào đây</a>
+                </p>
+                <p class="text-center text-muted">
+                    <a href="#">
+                        <strong>Đăng ký ngay</strong>
+                    </a>! Để nhận nhiều quyền lợi hấp dẫn!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login modal end-->
+<!-- Register Modal-->
+<div id="register-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="login-modalLabel" class="modal-title">Đăng Ký</h4>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center mt-3">
+                    <img src="/images/logo.png">
+                </div>
+
+                <div class="row justify-content-center mt-1 text-white" id="register_notify">
+
+                </div>
+
+                <form action="/authen/register" method="post" id="register_form">
+                    <div class="form-group mt-4">
+                        <div class="row align-items-center ">
+                            <div>
+                                <label>Email</label>
+                            </div>
+                            <div class="info-input">
+                                <input name="email_register" type="email" placeholder="Nhập Email" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-4">
+                        <div class="row align-items-center ">
+                            <div>
+                                <label>Tên Hiển Thị</label>
+                            </div>
+                            <div class="info-input">
+                                <input name="name_register" type="text" placeholder="Tên Của Bạn" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row align-items-center">
+                            <div>
+                                <label>Password</label>
+                            </div>
+                            <div class="info-input">
+                                <input name="password_register" id="password_rsg" type="password" minlength="6" maxlength="32" placeholder="Mật khẩu từ 6 đến 32 ký tự"
+                                    class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row align-items-center">
+                            <div>
+                                <label>Nhập lại Password</label>
+                            </div>
+                            <div class="info-input">
+                                <input name="password_retype" type="password" minlength="6" maxlength="32" placeholder="Nhập lại mật khẩu" class="form-control"
+                                    oninput="CheckRetypePassword(this)" required>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-5">
+                        <button class="btn btn-template-outlined" type="submit">
+                            <i class="fa fa-sign-in"></i> Đăng Ký</button>
+                    </p>
+                </form>
+                <p class="text-center text-muted">
+                    <a href="#" class="switch_to_login">Đã có tài khoản? Nhấn vào đây</a>
+                </p>
+                <p class="text-center text-muted">
+                    <a href="customer-register.html">
+                        <strong>Đăng ký ngay</strong>
+                    </a>! Để nhận nhiều quyền lợi hấp dẫn!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Register modal end-->
+
+<!-- Require Active Modal-->
+<div id="require-active-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="login-modalLabel" class="modal-title">Yêu Cầu Kích Hoạt</h4>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center mt-3">
+                    <img src="/images/fail.png">
+                </div>
+                <h5 class="m-4">Tài Khoản
+                    <span id="email_resend_name" style="color: red"></span> Chưa Được Kích Hoạt. Hãy Kiểm Tra Email để Kích Hoạt</h5>
+                <div class="row text-center">
+                    <div class="col-12">
+                        <button id="resend_email" style="width: 90%" class="btn btn-primary mb-4">Gửi Lại Email Kích Hoạt</button>
+                    </div>
+                    <div class="col-12">
+                        <a href="/books" style="width: 90%" class="btn btn-warning mb-4" role="button">Quay Lại Trang Mua Sắm</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Require Active end-->
+<div class="modal fade" id="success-resend-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Thành Công</h4>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="/images/sucess.png" alt="">
+                    <h4 id="success-resend-text">Gửi Lại Email Kích Hoạt Thành Công</h4>
+                    <h5>Kiểm Tra Email Để Kích Hoạt</h5>
+                    <a role="button" href="/" class="btn btn-warning mb-4">Quay Lại Trang Mua Sắm</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="failed-resend-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Thất Bại</h4>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="text-center">
+                    <img src="/images/fail.png" alt="">
+                    <h4 id="failed-resend-text">Gửi Email Thất Bại</h4>
+                    <h4>Kiểm Tra Lại Thông Tin</h4>
+                    <a role="button" href="/" class="btn btn-warning mb-4">Quay Lại Trang Mua Sắm</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="forgot-password-modal" tabindex="-1" role="dialog" aria-labelledby="login-modalLabel" aria-hidden="true" class="modal fade">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="login-modalLabel" class="modal-title">Quên Mật Khẩu</h4>
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-center mt-3">
+                    <img src="/images/logo.png">
+                </div>
+
+                <div class="row justify-content-center mt-1 text-white" id="forgotpassword_notify">
+
+                </div>
+
+                <form method="post" id="forgotpassword_form">
+                    <div class="form-group mt-4">
+                        <div class="row align-items-center ">
+                            <div>
+                                <label>Email</label>
+                            </div>
+                            <div class="info-input">
+                                <input name="Email" type="email" placeholder="Nhập Email" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-center mt-5">
+                        <button class="btn btn-template-outlined" type="submit">
+                            <i class="fa fa-sign-in"></i> Gửi Email</button>
+                    </p>
+                </form>
+                <p class="text-center text-muted">
+                    <a href="#" class="switch_to_login">Đã có tài khoản? Nhấn vào đây</a>
+                </p>
+                <p class="text-center text-muted">
+                    <a href="#" class="switch_to_register">Chưa đăng ký? Nhấn vào đây</a>
+                </p>
+                <p class="text-center text-muted">
+                    <a href="customer-register.html">
+                        <strong>Đăng ký ngay</strong>
+                    </a>! Để nhận nhiều quyền lợi hấp dẫn!</p>
+            </div>
+        </div>
+    </div>
+</div>

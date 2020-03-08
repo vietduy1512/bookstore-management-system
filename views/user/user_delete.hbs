@@ -1,0 +1,127 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+  {{>admin_head}}
+
+</head>
+
+<body>
+
+  {{>admin_dashboard_leftpanel}}
+
+  <!-- Right Panel -->
+
+  <div id="right-panel" class="right-panel">
+
+    {{>admin_dashboard_header}}
+
+    <div class="breadcrumbs">
+      <div class="col-sm-4">
+        <div class="page-header float-left">
+          <div class="page-title">
+            <h1>Dashboard</h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="page-header float-right">
+          <div class="page-title">
+            <ol class="breadcrumb text-right">
+              <li class="active">Dashboard</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content mt-3">
+      <div class="animated fadeIn">
+        <div class="row">
+          <div class="col-md-12 bg-danger">
+            <ol style="color:white">
+              {{#errors}}
+              <p>{{msg}}</p>
+              {{/errors}}
+            </ol>
+          </div>
+          <div class="col-md-12">
+            <div class="bar">
+              <form method="post">
+                <input type="hidden" name="user_id" class="form-control" value={{user._id}}>
+
+                <div class="row mt-3">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <h5 for="user_id">Email</h5>
+                      <div class="alert alert-secondary" role="alert">{{user.Email}}</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-3"></div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <h5 for="user_id">Tên</h5>
+                      <div class="alert alert-secondary" role="alert">{{user.TenHienThi}}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-template-outlined">
+                    <i class="fa fa-save"></i> Xóa</button>
+                </div>
+              </form>
+
+              <div class="row mt-5 error-text">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                  <ul>
+                    {{#errors}}
+                    <li>{{msg}}</li>
+                    {{/errors}}
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- .animated -->
+    </div>
+    <!-- .content -->
+  </div>
+  <!-- /#right-panel -->
+
+  <!-- Right Panel -->
+
+  {{>admin_script}}
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#bootstrap-data-table-export').DataTable();
+    });
+  </script>
+
+  <script>
+    function hide_element(_id) {
+      var x = document.getElementById(_id);
+      alert(_id)
+      if (x.style.display !== "none") {
+        x.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+
+</html>

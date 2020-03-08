@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+{{>__head__ }}
+
+<body>
+    <div id="all">
+
+        {{>topnavbar}}
+
+        <!-- Heading Start -->
+        <div id="heading-breadcrumbs">
+            <div class="container">
+                <div class="row d-flex align-items-center flex-wrap">
+                    <div class="col-md-7">
+                        <h4></h4>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="breadcrumb d-flex justify-content-end">
+                            <li class="breadcrumb-item">
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="/books">Checkout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Heading End -->
+
+        <div id="content">
+            <div class="container">
+                <div class="row p-4" style="background-color: white">
+                    <div class="col-12">
+                        <h1>Hóa Đơn: {{checkout._id}}</h1>
+                        <p>
+                            <strong style="font-size: 24px">Tình Trạng: </strong>
+                            <span style="font-size: 20px">{{checkout.GetTinhTrang}}</span>
+                        </p>
+                        <p>
+                            <strong style="font-size: 24px">Thời Điểm: </strong>
+                            <span style="font-size: 20px">{{checkout.ThoiGian}}</span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Thông Tin Vận Chuyển</h2>
+                        <p>
+                            <strong style="font-size: 22px">Loại: </strong>
+                            {{checkout.VanChuyen.Loai}}
+                        </p>
+                        <p>
+                            <strong style="font-size: 22px">Tên Người Nhận Hàng: </strong>
+                            {{checkout.VanChuyen.HoTen}}
+                        </p>
+                        <p>
+                            <strong style="font-size: 22px">Địa Chỉ Nhận Hàng: </strong>
+                            {{checkout.VanChuyen.DiaChi}}
+                        </p>
+                        <p>
+                            <strong style="font-size: 22px">Số Điện Thoại: </strong>
+                            {{checkout.VanChuyen.SoDT}}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Thông Tin Thanh Toán</h2>
+                        <p>
+                            <strong style="font-size: 22px">Loại: </strong>
+                            {{checkout.ThanhToan.Loai}}
+                        </p>
+                        <p>
+                            <strong style="font-size: 22px">Số Thẻ: </strong>
+                            {{checkout.ThanhToan.MaThe}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{>footer}}
+
+    </div>
+
+    {{>__script__}}
+    <script src="/javascripts/checkout.js"></script>
+</body>
+
+</html>

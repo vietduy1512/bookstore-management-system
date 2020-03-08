@@ -1,0 +1,174 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+    {{>admin_head}}
+
+</head>
+
+<body>
+
+    {{>admin_dashboard_leftpanel}}
+
+    <!-- Right Panel -->
+
+    <div id="right-panel" class="right-panel">
+
+        {{>admin_dashboard_header}}
+
+        <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right">
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content  mt-3">
+            <div class="animated fadeIn">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary text-danger">
+                                <div class="panel-heading mb-1">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <i class="fa fa-book fa-5x"></i>
+                                        </div>
+                                        <div class="col-9" style="text-align: right">
+                                            <h2>{{results.books.length}}</h2>
+                                            <h5>Sách</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/admins/book_list">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right">
+                                            <i class="fa fa-arrow-circle-right"></i>
+                                        </span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary text-success">
+                                <div class="panel-heading mb-1">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <i class="fa  fa-user fa-5x"></i>
+                                        </div>
+                                        <div class="col-9" style="text-align: right">
+                                            <h2>{{results.users.length}}</h2>
+                                            <h5>Người Dùng</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/admins/user_list">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right">
+                                            <i class="fa fa-arrow-circle-right"></i>
+                                        </span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary text-warning">
+                                <div class="panel-heading mb-1">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <i class="fa fa-pencil fa-5x"></i>
+                                        </div>
+                                        <div class="col-9" style="text-align: right">
+                                            <h2>{{results.authors.length}}</h2>
+                                            <h5>Tác Giả</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/admins/author_list">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right">
+                                            <i class="fa fa-arrow-circle-right"></i>
+                                        </span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-primary text-primary">
+                                <div class="panel-heading mb-1">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <i class="fa fa-file-text fa-5x"></i>
+                                        </div>
+                                        <div class="col-9" style="text-align: right">
+                                            <h2>{{results.bills.length}}</h2>
+                                            <h5>Hóa Đơn</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="/admins/checkout_list">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right">
+                                            <i class="fa fa-arrow-circle-right"></i>
+                                        </span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- .animated -->
+        </div>
+        <!-- .content -->
+    </div>
+    <!-- /#right-panel -->
+
+    <!-- Right Panel -->
+
+    {{>admin_script}}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#bootstrap-data-table-export').DataTable();
+        });
+    </script>
+
+    <script>
+        function hide_element(_id) {
+            var x = document.getElementById(_id);
+            alert(_id)
+            if (x.style.display !== "none") {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

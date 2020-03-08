@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+
+{{>__head__ }}
+
+<body>
+    <div id="all">
+
+        {{>topnavbar}}
+
+        <!-- Heading Start -->
+        <div id="heading-breadcrumbs">
+            <div class="container">
+                <div class="row d-flex align-items-center flex-wrap">
+                    <div class="col-md-7">
+                        <h4></h4>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="breadcrumb d-flex justify-content-end">
+                            <li class="breadcrumb-item">
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="/books">Checkout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Heading End -->
+
+        <div id="content">
+            <div class="container">
+
+                {{#if canCheckout}}
+                <div class="row" style="background-color: white">
+                    <div id="checkout" class="col-lg-9">
+                        <div class="box border-bottom-0">
+                            <form method="post" id="form-checkout">
+                                <h3>Địa Chỉ Giao Hàng</h3>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="hoten">Họ Tên</label>
+                                            <input id="hoten" type="text" class="form-control" name="HoTen" placeholder="VD: Nguyễn Văn A" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="sodt">Số Điện Thoại</label>
+                                            <input id="sodt" type="tel" pattern="[0-9]*" class="form-control" name="SoDT" placeholder="VD: 09999999999" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="tinhTP">Tỉnh/Thành phố</label>
+                                            <input id="tinhTP" type="text" class="form-control" name="TinhTP" placeholder="VD: TP. Hồ Chí Minh" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="quanHuyen">Quận/Huyện</label>
+                                            <input id="quanHuyen" type="text" class="form-control" name="QuanHuyen" placeholder="VD: Quận 1" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="tinhTP">Phường/Xã</label>
+                                            <input id="phongXa" type="text" class="form-control" name="PhuongXa" placeholder="VD: Phường 1" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="quanHuyen">Địa Chỉ</label>
+                                            <input id="diaChi" type="text" class="form-control" name="DiaChi" placeholder="VD: 123, Đường Nguyễn Thị Minh Khai" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h3>Hình Thức Giao Hàng</h3>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="checkbox-gh">
+                                            <label class="container-form">
+                                                <input type="radio" class="form-check-input radio-btn-form" value="TieuChuan" name="hinhthucgh" required checked>
+                                                <span class="checkmark"></span>
+                                                <h5>Giao Hàng Tiêu Chuẩn</h5>
+                                                <small>Từ 3-7 Ngày</small>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="checkbox-gh">
+                                            <label class="container-form">
+                                                <input type="radio" class="form-check-input radio-btn-form" value="Nhanh" name="hinhthucgh">
+                                                <span class="checkmark"></span>
+                                                <h5>Giao Hàng Nhanh</h5>
+                                                <small>Từ 2-5 Ngày</small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <h3>Hình Thức Thanh Toán</h3>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="checkbox-gh">
+                                            <label class="container-form">
+                                                <input type="radio" class="form-check-input radio-btn-form" value="COD" name="hinhthuctt" required checked>
+                                                <span class="checkmark"></span>
+                                                <h5>COD</h5>
+                                                <small>Giao Hàng Nhận Tiền</small>
+                                            </label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="checkbox-gh">
+                                            <label class="container-form">
+                                                <input type="radio" class="form-check-input radio-btn-form" value="CreditCard" name="hinhthuctt">
+                                                <span class="checkmark"></span>
+                                                <h5>Thanh toán bằng thẻ quốc tế</h5>
+                                                <small>Visa, Master, JCB</small>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div id="credit-card-info" class="contatiner credit-card-info">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="quanHuyen">Số Thẻ</label>
+                                                <input id="soThe" type="number" min="0" step="1" name="MaThe" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quanHuyen">Tên In Trên Thẻ</label>
+                                                <input id="tenThe" type="text" class="form-control" name="TenChuThe">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quanHuyen">Ngày Hết Hạn</label>
+                                                <input id="ngayHetHan" type="month" class="form-control" name="NgayHetHan">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="quanHuyen">Mã Bảo Mật</label>
+                                                <input id="maBaoMat" type="password" min="0" step="1" class="form-control" name="CCVV">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <img src="/images/credit-card_1.png" class="img-fluid" alt="">
+                                            <img src="/images/credit-card-guide.PNG" class="img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer d-flex flex-wrap align-items-center justify-content-between">
+                                    <div class="left-col">
+                                    </div>
+                                    <div class="right-col">
+                                        <button type="submit" class="btn btn-template-main"> Tiến Hàng Đặt Hàng
+                                            <i class="fa fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+
+                    </div>
+                    <div class="col-lg-3">
+                        <div id="order-summary" class="box mb-4 p-0">
+                            <div class="box-header mt-0">
+                                <h3>Thông Tin Hóa Đơn</h3>
+                            </div>
+                            {{#each shoppingcart}}
+                            <div class="col-12 row checkout-details">
+                                <div class="col-12">
+                                    <h5>{{book.TuaDe}}</h6>
+                                </div>
+                                <div class="col-5">SL: {{soluong}}</div>
+                                <div class="col-7">Giá: {{book.Gia}} ₫</div>
+                            </div>
+                            {{/each}}
+
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Số Tiền Đơn Hàng</td>
+                                            <th>
+                                                <span id="totalCart">{{totalcart}}</span> ₫</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Phí Vận Chuyển</td>
+                                            <th>
+                                                <span id="phiVC">{{PhiVC}}</span> ₫</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Thuế VAT(12%)</td>
+                                            <th>
+                                                <span id="thue">{{Thue}}</span> ₫</th>
+                                        </tr>
+                                        <tr class="total">
+                                            <td>Tổng Cộng</td>
+                                            <th>
+                                                <span id="tongCong">{{Tong}}</span> ₫</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                <div class="row" style="background-color: white">
+                    <div class="col-md-12 text-center mt-5">
+                        <img src="/images/empty-shopping-cart.png" style="width: 200px;postion: relative;left:-5%" alt="">
+                        <h5 class="m-4">Không có sản phẩm nào trong giỏ hàng của bạn.</h5>
+                        <a href="/books" class="btn btn-warning mb-4" role="button">Quay Lại Trang Mua Sắm</a>
+
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Success-Checkout" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Đặt Hàng Thành Công</h4>
+                    {{!-- <button type="button" class="close" data-dismiss="modal">&times;</button> --}}
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="/images/sucess.png" alt="">
+                        <h4>Cảm Ơn Bạn Đã Mua Hàng Tại Website</h4>
+                        <h5>Chi Tiết Đơn Hàng Sẽ Được Gửi Vào Email Của Bạn</h5>
+                        <a role="button" href="/" class="btn btn-warning mb-4">Quay Lại Trang Mua Sắm</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="Fail-Checkout">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-center">Đặt Hàng Thất Bại</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img src="/images/fail.png" alt="">
+                        <h4>Đã Có Lỗi Xảy Ra</h4>
+                        <h5>Bạn Vui Kiểm Ra Lại Thông Tin Thanh Toán Nhé</h5>
+                        <button class="btn btn-danger mb-4"  data-dismiss="modal">Đóng</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    {{>footer}}
+
+    </div>
+
+    {{>__script__}}
+    <script src="/javascripts/checkout.js"></script>
+</body>
+
+</html>

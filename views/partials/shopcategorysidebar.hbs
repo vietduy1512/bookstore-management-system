@@ -1,0 +1,105 @@
+<div class="col-md-3 d-none d-lg-block">
+  <!-- MENUS AND FILTERS-->
+
+  <!-- Sidebar-->
+  {{!-- <div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="h4 panel-title">ĐÁNH GIÁ</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a href="shop-category.html" class="nav-link">
+            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star"></span>
+            <small>(4 sao trở lên)</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="shop-category.html" class="nav-link">
+            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <small>(3 sao trở lên)</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="shop-category.html" class="nav-link">
+            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <small>(2 sao trở lên)</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="shop-category.html" class="nav-link">
+            <span class="fa fa-star star-checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+            <small>(1 sao trở lên)</small>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div> --}}
+  <div class="panel panel-default sidebar-menu">
+    <div class="panel-heading d-flex align-items-center justify-content-between">
+      <h3 class="h4 panel-title">Thể loại</h3>
+      {{!-- <a href="shop-category.html" class="btn btn-sm btn-danger">
+        <i class="fa fa-times-circle"></i>
+        <span class="d-none d-md-inline-block">Xóa chọn</span>
+      </a> --}}
+    </div>
+    <div class="panel-body">
+      <ul class="nav nav-pills flex-column">
+        <!--
+        <div class="checkbox">
+          <label>
+            <input type="checkbox">
+            <b> Sách có phí</b>
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox">
+            <b> Sách miễn phí</b>
+          </label>
+        </div>
+        -->
+        {{{render_TheLoai_Search theLoais}}}
+      </ul>
+    </div>
+  </div>
+  {{!-- <div class="panel panel-default sidebar-menu">
+    <div class="panel-heading">
+      <h3 class="h4 panel-title">GIÁ TIỀN</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="nav nav-pills flex-column">
+        <small>
+          <li class="nav-item">
+            <a href="shop-category.html" class="nav-link">0 ₫ - 100.000 ₫</a>
+          </li>
+          <li class="nav-item">
+            <a href="shop-category.html" class="nav-link">100.000 ₫ - 500.000 ₫</a>
+          </li>
+          <li class="nav-item">
+            <a href="shop-category.html" class="nav-link">500.000 ₫ - 1.000.000 ₫</a>
+          </li>
+          <li class="nav-item">
+            <a href="shop-category.html" class="nav-link">1.000.000 ₫ trở lên</a>
+          </li>
+        </small>
+      </ul>
+    </div>
+  </div> --}}
+</div>

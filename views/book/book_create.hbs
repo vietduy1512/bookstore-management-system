@@ -1,0 +1,172 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
+<head>
+  {{>admin_head}}
+
+</head>
+
+<body>
+
+  {{>admin_dashboard_leftpanel}}
+
+  <!-- Right Panel -->
+
+  <div id="right-panel" class="right-panel">
+
+    {{>admin_dashboard_header}}
+
+    <div class="breadcrumbs">
+      <div class="col-sm-4">
+        <div class="page-header float-left">
+          <div class="page-title">
+            <h1>Dashboard</h1>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="page-header float-right">
+          <div class="page-title">
+            <ol class="breadcrumb text-right">
+              <li class="active">Dashboard</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content mt-3">
+      <div class="animated fadeIn">
+        <div class="row">
+          <div class="col-md-12 bg-danger">
+              <ol style="color:white">
+                {{#errors}}
+                <p>{{msg}}</p>
+                {{/errors}}
+              </ol>
+          </div>
+          <div class="col-md-12">
+
+            <div class="bar">
+              <form method="post" enctype="multipart/form-data">
+                <div class="row mt-1">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <h5 for="isbn">Mã sách</h5>
+                      <input type="text" name="isbn" class="form-control" placeholder="ISBN01" value='{{book.MaSach}}' required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <h5 for="title">Tựa đề</h5>
+                      <input type="text" name="title" class="form-control" placeholder="Yêu người bên bạn lúc khó khăn" value='{{book.TuaDe}}'required >
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <h5 for="image">Hình bìa</h5>
+                      <input type="file" name="image" class="form-control" accept="image/*" value="{{book.HinhAnh}}" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <h5 for="price">Giá tiền</h5>
+                      <input type="number" name="price"  min="1000"  class="form-control" placeholder="150000" value="{{book.Gia}}" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <h5 for="author">Tác giả</h5>
+                      <select name="author" class="form-control" required>
+                        <option disabled selected value="">-- Chọn Tác giả --</option>
+                        {{#each authors}}
+                        <option id={{_id}} value={{_id}}>{{Ten}}</option>
+                        {{/each}}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <h5 for="summary">Giới thiệu</h5>
+                      <textarea required name="summary" class="form-control" placeholder="Nội Dung giới thiệu" rows="5">{{book.GioiThieu}}</textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <h5 for="genre">Thể loại</h5>
+                      <div class="row">
+                        {{#genres}}
+                        <div class="col-md-4">
+                          <div class="form-check">
+                            <label class="form-check-label">
+                              <input  type="checkbox" name="genre" class="form-check-input" id={{_id}} value={{_id}} {{check_isChecked_option checked}}>
+                              <h6>{{Ten}}</h6>
+                            </label>
+                          </div>
+
+                        </div>
+                        {{/genres}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-lg btn-outline-primary">
+                    <i class="fa fa-save"></i> Tạo</button>
+                </div>
+                <hr>
+              </form>
+
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- .animated -->
+    </div>
+    <!-- .content -->
+  </div>
+  <!-- /#right-panel -->
+
+  <!-- Right Panel -->
+
+  {{>admin_script}}
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#bootstrap-data-table-export').DataTable();
+    });
+  </script>
+
+  <script>
+    function hide_element(_id) {
+      var x = document.getElementById(_id);
+      alert(_id)
+      if (x.style.display !== "none") {
+        x.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+
+</html>
